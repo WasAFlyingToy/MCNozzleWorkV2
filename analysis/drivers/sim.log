@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/opt/spack/opt/spack/linux-ubuntu22.04-x86_64/gcc-11.3.0/dd4hep-1.25.3-ow3tpsqofg44igskzrndeabnas3sdkju/bin/ddsim", line 22, in <module>
-    RUNNER.parseOptions()
-  File "/opt/spack/opt/spack/linux-ubuntu22.04-x86_64/gcc-11.3.0/dd4hep-1.25.3-ow3tpsqofg44igskzrndeabnas3sdkju/lib/python3.10/site-packages/DDSim/DD4hepSimulation.py", line 124, in parseOptions
-    self.readSteeringFile()
-  File "/opt/spack/opt/spack/linux-ubuntu22.04-x86_64/gcc-11.3.0/dd4hep-1.25.3-ow3tpsqofg44igskzrndeabnas3sdkju/lib/python3.10/site-packages/DDSim/DD4hepSimulation.py", line 102, in readSteeringFile
-    exec(compile(open(self.steeringFile).read(), self.steeringFile, 'exec'), globs, locs)
-FileNotFoundError: [Errno 2] No such file or directory: 'steer_sim_Hbb_modded_v1_0_FULL.py'
