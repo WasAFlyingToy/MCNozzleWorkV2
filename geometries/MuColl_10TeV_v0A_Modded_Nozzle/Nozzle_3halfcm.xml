@@ -1,0 +1,81 @@
+<lccdd>
+    <!--  Definition of global dictionary constants          -->
+    <define>
+        <constant name="Nozzle_kink_z"  value="100*cm"/>
+    </define>
+    
+    <!--  Definition of the used visualization attributes    -->
+    <display>
+        <vis name="NozzleWVis" alpha="1.0" r="0.0" g="1.0" b="1.0" showDaughters="false" visible="true"/>
+        <vis name="NozzleBCHVis" alpha="1.0" r="0.3" g="1.0" b="1.0" showDaughters="false" visible="false"/>
+        <vis name="NozzleKillZoneVis" alpha="1.0" r="1.0" g="1.0" b="1.0" showDaughters="false" visible="true"/>
+    </display>
+    
+    
+    <detectors>
+        <comment>Nozzle</comment>
+        
+        <detector name="NozzleW_right" type="DD4hep_PolyconeSupport" vis="NozzleWVis" region="NozzleRegion">
+            <comment>Internal part of the nozzle: Tungsten</comment>
+            <material name="Tungsten"/>
+            <zplane z="Nozzle_zmin" rmin="1*cm" rmax="1*cm"/>               <!-- 1. start tip -->
+            <zplane z="15*cm" rmin="0.6*cm" rmax="2.59223*cm" />        <!-- 2. midway tip 3.5 cm delta -->
+            <zplane z="23.334*cm" rmin="0.57*cm" rmax="4.07*cm" />            <!-- 3. blackhole-nozzle hole merge -->
+            <zplane z="Nozzle_kink_z" rmin="14.13*cm" rmax="17.63*cm" />    <!-- 4. end of tip delta 3.5 cm delta -->
+            <zplane z="Nozzle_kink_z" rmin="11.5*cm" rmax="15*cm" />          <!-- 5. start of kink 3.5 cm delta -->
+            <zplane z="200*cm" rmin="13.5*cm" rmax="17*cm" />                 <!-- 6. end of kink & start of large nozzle 4.5 cm delta -->
+            <zplane z="600*cm" rmin="46.5*cm" rmax="50*cm" />                 <!-- 7. end of large cone 3.5 cm delta -->
+        </detector>
+
+        <detector name="NozzleKillZone_right" type="DD4hep_PolyconeSupport" vis="NozzleKillZoneVis" region="NozzleRegion" limits="NozzleRegionLimitSet">
+            <comment>Internal part of the nozzle: Kill zone</comment>
+            <material name="Tungsten"/>
+            
+            <zplane z="23.334*cm" rmin="0.57*cm" rmax="0.57*cm" />            <!-- 3. blackhole-nozzle hole merge -->
+            <zplane z="Nozzle_kink_z" rmin="0.3*cm" rmax="13.13*cm" />         <!-- 4. end of tip-->
+            <zplane z="Nozzle_kink_z" rmin="0.3*cm" rmax="10.5*cm" />         <!-- 5. start of kink -->
+            <zplane z="200*cm" rmin="0.596*cm" rmax="13.5*cm" />              <!-- 6. end of kink & start of large nozzle -->
+            <zplane z="600*cm" rmin="1.78*cm" rmax="46.5*cm" />               <!-- 7. end of large cone -->
+        </detector>
+
+        <detector name="NozzleW_left" type="DD4hep_PolyconeSupport" vis="NozzleWVis" region="NozzleRegion">
+            <comment>Internal part of the nozzle: Tungsten</comment>
+            <material name="Tungsten"/>
+            <zplane z="-Nozzle_zmin" rmin="1*cm" rmax="1*cm"/>               <!-- 1. start tip -->
+            <zplane z="-15*cm" rmin="0.6*cm" rmax="2.59223*cm" />        <!-- 2. midway tip 3.5 cm delta -->
+            <zplane z="-23.334*cm" rmin="0.57*cm" rmax="4.07*cm" />            <!-- 3. blackhole-nozzle hole merge -->
+            <zplane z="-Nozzle_kink_z" rmin="14.13*cm" rmax="17.63*cm" />    <!-- 4. end of tip delta 3.5 cm delta -->
+            <zplane z="-Nozzle_kink_z" rmin="11.5*cm" rmax="15*cm" />          <!-- 5. start of kink 3.5 cm delta -->
+            <zplane z="-200*cm" rmin="13.5*cm" rmax="17*cm" />                 <!-- 6. end of kink & start of large nozzle 4.5 cm delta -->
+            <zplane z="-600*cm" rmin="46.5*cm" rmax="50*cm" />                 <!-- 7. end of large cone 3.5 cm delta -->
+        </detector>
+
+        <detector name="NozzleKillZone_left" type="DD4hep_PolyconeSupport" vis="NozzleKillZoneVis" region="NozzleRegion" limits="NozzleRegionLimitSet">
+            <comment>Internal part of the nozzle: Kill zone</comment>
+            <material name="Tungsten"/>
+            <zplane z="-23.334*cm" rmin="0.57*cm" rmax="0.57*cm" />            <!-- 3. blackhole-nozzle hole merge -->
+            <zplane z="-Nozzle_kink_z" rmin="0.3*cm" rmax="14.13*cm" />         <!-- 4. end of tip-->
+            <zplane z="-Nozzle_kink_z" rmin="0.3*cm" rmax="11.5*cm" />         <!-- 5. start of kink -->
+            <zplane z="-200*cm" rmin="0.596*cm" rmax="13.5*cm" />              <!-- 6. end of kink & start of large nozzle -->
+            <zplane z="-600*cm" rmin="1.78*cm" rmax="46.5*cm" />               <!-- 7. end of large cone -->
+        </detector>
+
+        <detector name="NozzleBCH_right" type="DD4hep_PolyconeSupport" vis="NozzleBCHVis" region="NozzleRegion">
+            <comment>Outer part of the nozzle: Borated Polyehtylene</comment>
+            <material name="BCH2"/>
+            <zplane z="Nozzle_kink_z" rmin="15*cm" rmax="17.63*cm" />
+            <zplane z="200*cm" rmin="17*cm" rmax="26.104*cm" />
+            <zplane z="Nozzle_zmax" rmin="50*cm" rmax="60*cm" />
+        </detector>
+
+
+        <detector name="NozzleBCH_left" type="DD4hep_PolyconeSupport" vis="NozzleBCHVis" region="NozzleRegion">
+            <comment>Outer part of the nozzle: Borated Polyehtylene</comment>
+            <material name="BCH2"/>
+            <zplane z="-Nozzle_kink_z" rmin="15*cm" rmax="17.63*cm" />
+            <zplane z="-200*cm" rmin="17*cm" rmax="26.104*cm" />
+            <zplane z="-Nozzle_zmax" rmin="50*cm" rmax="60*cm" />
+        </detector>
+
+    </detectors>
+</lccdd>
